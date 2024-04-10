@@ -1,0 +1,892 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    COMMA
+
+Grammar
+
+Rule 0     S' -> program
+Rule 1     program -> statements
+Rule 2     statements -> statement
+Rule 3     statements -> statement statements
+Rule 4     statement -> ID ASSIGN expression SEMICOLON
+Rule 5     statement -> IF expression LBRACE statements RBRACE
+Rule 6     statement -> IF expression LBRACE statements RBRACE ELSE LBRACE statements RBRACE
+Rule 7     statement -> WHILE expression LBRACE statements RBRACE
+Rule 8     statement -> FOR expression IN RANGE LBRACE statements RBRACE
+Rule 9     statement -> expression SEMICOLON
+Rule 10    expression -> INTEGER
+Rule 11    expression -> ID
+Rule 12    expression -> ID PLUS ID
+Rule 13    expression -> ID MINUS ID
+Rule 14    expression -> ID MULT ID
+Rule 15    expression -> ID DIV ID
+Rule 16    expression -> LPAREN expression RPAREN
+Rule 17    expression -> expression EQ expression
+Rule 18    expression -> expression LT expression
+Rule 19    expression -> expression GT expression
+
+Terminals, with rules where they appear
+
+ASSIGN               : 4
+COMMA                : 
+DIV                  : 15
+ELSE                 : 6
+EQ                   : 17
+FOR                  : 8
+GT                   : 19
+ID                   : 4 11 12 12 13 13 14 14 15 15
+IF                   : 5 6
+IN                   : 8
+INTEGER              : 10
+LBRACE               : 5 6 6 7 8
+LPAREN               : 16
+LT                   : 18
+MINUS                : 13
+MULT                 : 14
+PLUS                 : 12
+RANGE                : 8
+RBRACE               : 5 6 6 7 8
+RPAREN               : 16
+SEMICOLON            : 4 9
+WHILE                : 7
+error                : 
+
+Nonterminals, with rules where they appear
+
+expression           : 4 5 6 7 8 9 16 17 17 18 18 19 19
+program              : 0
+statement            : 2 3
+statements           : 1 3 5 6 6 7 8
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . program
+    (1) program -> . statements
+    (2) statements -> . statement
+    (3) statements -> . statement statements
+    (4) statement -> . ID ASSIGN expression SEMICOLON
+    (5) statement -> . IF expression LBRACE statements RBRACE
+    (6) statement -> . IF expression LBRACE statements RBRACE ELSE LBRACE statements RBRACE
+    (7) statement -> . WHILE expression LBRACE statements RBRACE
+    (8) statement -> . FOR expression IN RANGE LBRACE statements RBRACE
+    (9) statement -> . expression SEMICOLON
+    (10) expression -> . INTEGER
+    (11) expression -> . ID
+    (12) expression -> . ID PLUS ID
+    (13) expression -> . ID MINUS ID
+    (14) expression -> . ID MULT ID
+    (15) expression -> . ID DIV ID
+    (16) expression -> . LPAREN expression RPAREN
+    (17) expression -> . expression EQ expression
+    (18) expression -> . expression LT expression
+    (19) expression -> . expression GT expression
+
+    ID              shift and go to state 4
+    IF              shift and go to state 6
+    WHILE           shift and go to state 7
+    FOR             shift and go to state 8
+    INTEGER         shift and go to state 9
+    LPAREN          shift and go to state 10
+
+    program                        shift and go to state 1
+    statements                     shift and go to state 2
+    statement                      shift and go to state 3
+    expression                     shift and go to state 5
+
+state 1
+
+    (0) S' -> program .
+
+
+
+state 2
+
+    (1) program -> statements .
+
+    $end            reduce using rule 1 (program -> statements .)
+
+
+state 3
+
+    (2) statements -> statement .
+    (3) statements -> statement . statements
+    (2) statements -> . statement
+    (3) statements -> . statement statements
+    (4) statement -> . ID ASSIGN expression SEMICOLON
+    (5) statement -> . IF expression LBRACE statements RBRACE
+    (6) statement -> . IF expression LBRACE statements RBRACE ELSE LBRACE statements RBRACE
+    (7) statement -> . WHILE expression LBRACE statements RBRACE
+    (8) statement -> . FOR expression IN RANGE LBRACE statements RBRACE
+    (9) statement -> . expression SEMICOLON
+    (10) expression -> . INTEGER
+    (11) expression -> . ID
+    (12) expression -> . ID PLUS ID
+    (13) expression -> . ID MINUS ID
+    (14) expression -> . ID MULT ID
+    (15) expression -> . ID DIV ID
+    (16) expression -> . LPAREN expression RPAREN
+    (17) expression -> . expression EQ expression
+    (18) expression -> . expression LT expression
+    (19) expression -> . expression GT expression
+
+    $end            reduce using rule 2 (statements -> statement .)
+    RBRACE          reduce using rule 2 (statements -> statement .)
+    ID              shift and go to state 4
+    IF              shift and go to state 6
+    WHILE           shift and go to state 7
+    FOR             shift and go to state 8
+    INTEGER         shift and go to state 9
+    LPAREN          shift and go to state 10
+
+    statement                      shift and go to state 3
+    statements                     shift and go to state 11
+    expression                     shift and go to state 5
+
+state 4
+
+    (4) statement -> ID . ASSIGN expression SEMICOLON
+    (11) expression -> ID .
+    (12) expression -> ID . PLUS ID
+    (13) expression -> ID . MINUS ID
+    (14) expression -> ID . MULT ID
+    (15) expression -> ID . DIV ID
+
+    ASSIGN          shift and go to state 12
+    SEMICOLON       reduce using rule 11 (expression -> ID .)
+    EQ              reduce using rule 11 (expression -> ID .)
+    LT              reduce using rule 11 (expression -> ID .)
+    GT              reduce using rule 11 (expression -> ID .)
+    PLUS            shift and go to state 13
+    MINUS           shift and go to state 14
+    MULT            shift and go to state 15
+    DIV             shift and go to state 16
+
+
+state 5
+
+    (9) statement -> expression . SEMICOLON
+    (17) expression -> expression . EQ expression
+    (18) expression -> expression . LT expression
+    (19) expression -> expression . GT expression
+
+    SEMICOLON       shift and go to state 17
+    EQ              shift and go to state 18
+    LT              shift and go to state 19
+    GT              shift and go to state 20
+
+
+state 6
+
+    (5) statement -> IF . expression LBRACE statements RBRACE
+    (6) statement -> IF . expression LBRACE statements RBRACE ELSE LBRACE statements RBRACE
+    (10) expression -> . INTEGER
+    (11) expression -> . ID
+    (12) expression -> . ID PLUS ID
+    (13) expression -> . ID MINUS ID
+    (14) expression -> . ID MULT ID
+    (15) expression -> . ID DIV ID
+    (16) expression -> . LPAREN expression RPAREN
+    (17) expression -> . expression EQ expression
+    (18) expression -> . expression LT expression
+    (19) expression -> . expression GT expression
+
+    INTEGER         shift and go to state 9
+    ID              shift and go to state 22
+    LPAREN          shift and go to state 10
+
+    expression                     shift and go to state 21
+
+state 7
+
+    (7) statement -> WHILE . expression LBRACE statements RBRACE
+    (10) expression -> . INTEGER
+    (11) expression -> . ID
+    (12) expression -> . ID PLUS ID
+    (13) expression -> . ID MINUS ID
+    (14) expression -> . ID MULT ID
+    (15) expression -> . ID DIV ID
+    (16) expression -> . LPAREN expression RPAREN
+    (17) expression -> . expression EQ expression
+    (18) expression -> . expression LT expression
+    (19) expression -> . expression GT expression
+
+    INTEGER         shift and go to state 9
+    ID              shift and go to state 22
+    LPAREN          shift and go to state 10
+
+    expression                     shift and go to state 23
+
+state 8
+
+    (8) statement -> FOR . expression IN RANGE LBRACE statements RBRACE
+    (10) expression -> . INTEGER
+    (11) expression -> . ID
+    (12) expression -> . ID PLUS ID
+    (13) expression -> . ID MINUS ID
+    (14) expression -> . ID MULT ID
+    (15) expression -> . ID DIV ID
+    (16) expression -> . LPAREN expression RPAREN
+    (17) expression -> . expression EQ expression
+    (18) expression -> . expression LT expression
+    (19) expression -> . expression GT expression
+
+    INTEGER         shift and go to state 9
+    ID              shift and go to state 22
+    LPAREN          shift and go to state 10
+
+    expression                     shift and go to state 24
+
+state 9
+
+    (10) expression -> INTEGER .
+
+    SEMICOLON       reduce using rule 10 (expression -> INTEGER .)
+    EQ              reduce using rule 10 (expression -> INTEGER .)
+    LT              reduce using rule 10 (expression -> INTEGER .)
+    GT              reduce using rule 10 (expression -> INTEGER .)
+    LBRACE          reduce using rule 10 (expression -> INTEGER .)
+    IN              reduce using rule 10 (expression -> INTEGER .)
+    RPAREN          reduce using rule 10 (expression -> INTEGER .)
+
+
+state 10
+
+    (16) expression -> LPAREN . expression RPAREN
+    (10) expression -> . INTEGER
+    (11) expression -> . ID
+    (12) expression -> . ID PLUS ID
+    (13) expression -> . ID MINUS ID
+    (14) expression -> . ID MULT ID
+    (15) expression -> . ID DIV ID
+    (16) expression -> . LPAREN expression RPAREN
+    (17) expression -> . expression EQ expression
+    (18) expression -> . expression LT expression
+    (19) expression -> . expression GT expression
+
+    INTEGER         shift and go to state 9
+    ID              shift and go to state 22
+    LPAREN          shift and go to state 10
+
+    expression                     shift and go to state 25
+
+state 11
+
+    (3) statements -> statement statements .
+
+    $end            reduce using rule 3 (statements -> statement statements .)
+    RBRACE          reduce using rule 3 (statements -> statement statements .)
+
+
+state 12
+
+    (4) statement -> ID ASSIGN . expression SEMICOLON
+    (10) expression -> . INTEGER
+    (11) expression -> . ID
+    (12) expression -> . ID PLUS ID
+    (13) expression -> . ID MINUS ID
+    (14) expression -> . ID MULT ID
+    (15) expression -> . ID DIV ID
+    (16) expression -> . LPAREN expression RPAREN
+    (17) expression -> . expression EQ expression
+    (18) expression -> . expression LT expression
+    (19) expression -> . expression GT expression
+
+    INTEGER         shift and go to state 9
+    ID              shift and go to state 22
+    LPAREN          shift and go to state 10
+
+    expression                     shift and go to state 26
+
+state 13
+
+    (12) expression -> ID PLUS . ID
+
+    ID              shift and go to state 27
+
+
+state 14
+
+    (13) expression -> ID MINUS . ID
+
+    ID              shift and go to state 28
+
+
+state 15
+
+    (14) expression -> ID MULT . ID
+
+    ID              shift and go to state 29
+
+
+state 16
+
+    (15) expression -> ID DIV . ID
+
+    ID              shift and go to state 30
+
+
+state 17
+
+    (9) statement -> expression SEMICOLON .
+
+    ID              reduce using rule 9 (statement -> expression SEMICOLON .)
+    IF              reduce using rule 9 (statement -> expression SEMICOLON .)
+    WHILE           reduce using rule 9 (statement -> expression SEMICOLON .)
+    FOR             reduce using rule 9 (statement -> expression SEMICOLON .)
+    INTEGER         reduce using rule 9 (statement -> expression SEMICOLON .)
+    LPAREN          reduce using rule 9 (statement -> expression SEMICOLON .)
+    $end            reduce using rule 9 (statement -> expression SEMICOLON .)
+    RBRACE          reduce using rule 9 (statement -> expression SEMICOLON .)
+
+
+state 18
+
+    (17) expression -> expression EQ . expression
+    (10) expression -> . INTEGER
+    (11) expression -> . ID
+    (12) expression -> . ID PLUS ID
+    (13) expression -> . ID MINUS ID
+    (14) expression -> . ID MULT ID
+    (15) expression -> . ID DIV ID
+    (16) expression -> . LPAREN expression RPAREN
+    (17) expression -> . expression EQ expression
+    (18) expression -> . expression LT expression
+    (19) expression -> . expression GT expression
+
+    INTEGER         shift and go to state 9
+    ID              shift and go to state 22
+    LPAREN          shift and go to state 10
+
+    expression                     shift and go to state 31
+
+state 19
+
+    (18) expression -> expression LT . expression
+    (10) expression -> . INTEGER
+    (11) expression -> . ID
+    (12) expression -> . ID PLUS ID
+    (13) expression -> . ID MINUS ID
+    (14) expression -> . ID MULT ID
+    (15) expression -> . ID DIV ID
+    (16) expression -> . LPAREN expression RPAREN
+    (17) expression -> . expression EQ expression
+    (18) expression -> . expression LT expression
+    (19) expression -> . expression GT expression
+
+    INTEGER         shift and go to state 9
+    ID              shift and go to state 22
+    LPAREN          shift and go to state 10
+
+    expression                     shift and go to state 32
+
+state 20
+
+    (19) expression -> expression GT . expression
+    (10) expression -> . INTEGER
+    (11) expression -> . ID
+    (12) expression -> . ID PLUS ID
+    (13) expression -> . ID MINUS ID
+    (14) expression -> . ID MULT ID
+    (15) expression -> . ID DIV ID
+    (16) expression -> . LPAREN expression RPAREN
+    (17) expression -> . expression EQ expression
+    (18) expression -> . expression LT expression
+    (19) expression -> . expression GT expression
+
+    INTEGER         shift and go to state 9
+    ID              shift and go to state 22
+    LPAREN          shift and go to state 10
+
+    expression                     shift and go to state 33
+
+state 21
+
+    (5) statement -> IF expression . LBRACE statements RBRACE
+    (6) statement -> IF expression . LBRACE statements RBRACE ELSE LBRACE statements RBRACE
+    (17) expression -> expression . EQ expression
+    (18) expression -> expression . LT expression
+    (19) expression -> expression . GT expression
+
+    LBRACE          shift and go to state 34
+    EQ              shift and go to state 18
+    LT              shift and go to state 19
+    GT              shift and go to state 20
+
+
+state 22
+
+    (11) expression -> ID .
+    (12) expression -> ID . PLUS ID
+    (13) expression -> ID . MINUS ID
+    (14) expression -> ID . MULT ID
+    (15) expression -> ID . DIV ID
+
+    LBRACE          reduce using rule 11 (expression -> ID .)
+    EQ              reduce using rule 11 (expression -> ID .)
+    LT              reduce using rule 11 (expression -> ID .)
+    GT              reduce using rule 11 (expression -> ID .)
+    IN              reduce using rule 11 (expression -> ID .)
+    RPAREN          reduce using rule 11 (expression -> ID .)
+    SEMICOLON       reduce using rule 11 (expression -> ID .)
+    PLUS            shift and go to state 13
+    MINUS           shift and go to state 14
+    MULT            shift and go to state 15
+    DIV             shift and go to state 16
+
+
+state 23
+
+    (7) statement -> WHILE expression . LBRACE statements RBRACE
+    (17) expression -> expression . EQ expression
+    (18) expression -> expression . LT expression
+    (19) expression -> expression . GT expression
+
+    LBRACE          shift and go to state 35
+    EQ              shift and go to state 18
+    LT              shift and go to state 19
+    GT              shift and go to state 20
+
+
+state 24
+
+    (8) statement -> FOR expression . IN RANGE LBRACE statements RBRACE
+    (17) expression -> expression . EQ expression
+    (18) expression -> expression . LT expression
+    (19) expression -> expression . GT expression
+
+    IN              shift and go to state 36
+    EQ              shift and go to state 18
+    LT              shift and go to state 19
+    GT              shift and go to state 20
+
+
+state 25
+
+    (16) expression -> LPAREN expression . RPAREN
+    (17) expression -> expression . EQ expression
+    (18) expression -> expression . LT expression
+    (19) expression -> expression . GT expression
+
+    RPAREN          shift and go to state 37
+    EQ              shift and go to state 18
+    LT              shift and go to state 19
+    GT              shift and go to state 20
+
+
+state 26
+
+    (4) statement -> ID ASSIGN expression . SEMICOLON
+    (17) expression -> expression . EQ expression
+    (18) expression -> expression . LT expression
+    (19) expression -> expression . GT expression
+
+    SEMICOLON       shift and go to state 38
+    EQ              shift and go to state 18
+    LT              shift and go to state 19
+    GT              shift and go to state 20
+
+
+state 27
+
+    (12) expression -> ID PLUS ID .
+
+    SEMICOLON       reduce using rule 12 (expression -> ID PLUS ID .)
+    EQ              reduce using rule 12 (expression -> ID PLUS ID .)
+    LT              reduce using rule 12 (expression -> ID PLUS ID .)
+    GT              reduce using rule 12 (expression -> ID PLUS ID .)
+    LBRACE          reduce using rule 12 (expression -> ID PLUS ID .)
+    IN              reduce using rule 12 (expression -> ID PLUS ID .)
+    RPAREN          reduce using rule 12 (expression -> ID PLUS ID .)
+
+
+state 28
+
+    (13) expression -> ID MINUS ID .
+
+    SEMICOLON       reduce using rule 13 (expression -> ID MINUS ID .)
+    EQ              reduce using rule 13 (expression -> ID MINUS ID .)
+    LT              reduce using rule 13 (expression -> ID MINUS ID .)
+    GT              reduce using rule 13 (expression -> ID MINUS ID .)
+    LBRACE          reduce using rule 13 (expression -> ID MINUS ID .)
+    IN              reduce using rule 13 (expression -> ID MINUS ID .)
+    RPAREN          reduce using rule 13 (expression -> ID MINUS ID .)
+
+
+state 29
+
+    (14) expression -> ID MULT ID .
+
+    SEMICOLON       reduce using rule 14 (expression -> ID MULT ID .)
+    EQ              reduce using rule 14 (expression -> ID MULT ID .)
+    LT              reduce using rule 14 (expression -> ID MULT ID .)
+    GT              reduce using rule 14 (expression -> ID MULT ID .)
+    LBRACE          reduce using rule 14 (expression -> ID MULT ID .)
+    IN              reduce using rule 14 (expression -> ID MULT ID .)
+    RPAREN          reduce using rule 14 (expression -> ID MULT ID .)
+
+
+state 30
+
+    (15) expression -> ID DIV ID .
+
+    SEMICOLON       reduce using rule 15 (expression -> ID DIV ID .)
+    EQ              reduce using rule 15 (expression -> ID DIV ID .)
+    LT              reduce using rule 15 (expression -> ID DIV ID .)
+    GT              reduce using rule 15 (expression -> ID DIV ID .)
+    LBRACE          reduce using rule 15 (expression -> ID DIV ID .)
+    IN              reduce using rule 15 (expression -> ID DIV ID .)
+    RPAREN          reduce using rule 15 (expression -> ID DIV ID .)
+
+
+state 31
+
+    (17) expression -> expression EQ expression .
+    (17) expression -> expression . EQ expression
+    (18) expression -> expression . LT expression
+    (19) expression -> expression . GT expression
+
+  ! shift/reduce conflict for EQ resolved as shift
+  ! shift/reduce conflict for LT resolved as shift
+  ! shift/reduce conflict for GT resolved as shift
+    SEMICOLON       reduce using rule 17 (expression -> expression EQ expression .)
+    LBRACE          reduce using rule 17 (expression -> expression EQ expression .)
+    IN              reduce using rule 17 (expression -> expression EQ expression .)
+    RPAREN          reduce using rule 17 (expression -> expression EQ expression .)
+    EQ              shift and go to state 18
+    LT              shift and go to state 19
+    GT              shift and go to state 20
+
+  ! EQ              [ reduce using rule 17 (expression -> expression EQ expression .) ]
+  ! LT              [ reduce using rule 17 (expression -> expression EQ expression .) ]
+  ! GT              [ reduce using rule 17 (expression -> expression EQ expression .) ]
+
+
+state 32
+
+    (18) expression -> expression LT expression .
+    (17) expression -> expression . EQ expression
+    (18) expression -> expression . LT expression
+    (19) expression -> expression . GT expression
+
+  ! shift/reduce conflict for EQ resolved as shift
+  ! shift/reduce conflict for LT resolved as shift
+  ! shift/reduce conflict for GT resolved as shift
+    SEMICOLON       reduce using rule 18 (expression -> expression LT expression .)
+    LBRACE          reduce using rule 18 (expression -> expression LT expression .)
+    IN              reduce using rule 18 (expression -> expression LT expression .)
+    RPAREN          reduce using rule 18 (expression -> expression LT expression .)
+    EQ              shift and go to state 18
+    LT              shift and go to state 19
+    GT              shift and go to state 20
+
+  ! EQ              [ reduce using rule 18 (expression -> expression LT expression .) ]
+  ! LT              [ reduce using rule 18 (expression -> expression LT expression .) ]
+  ! GT              [ reduce using rule 18 (expression -> expression LT expression .) ]
+
+
+state 33
+
+    (19) expression -> expression GT expression .
+    (17) expression -> expression . EQ expression
+    (18) expression -> expression . LT expression
+    (19) expression -> expression . GT expression
+
+  ! shift/reduce conflict for EQ resolved as shift
+  ! shift/reduce conflict for LT resolved as shift
+  ! shift/reduce conflict for GT resolved as shift
+    SEMICOLON       reduce using rule 19 (expression -> expression GT expression .)
+    LBRACE          reduce using rule 19 (expression -> expression GT expression .)
+    IN              reduce using rule 19 (expression -> expression GT expression .)
+    RPAREN          reduce using rule 19 (expression -> expression GT expression .)
+    EQ              shift and go to state 18
+    LT              shift and go to state 19
+    GT              shift and go to state 20
+
+  ! EQ              [ reduce using rule 19 (expression -> expression GT expression .) ]
+  ! LT              [ reduce using rule 19 (expression -> expression GT expression .) ]
+  ! GT              [ reduce using rule 19 (expression -> expression GT expression .) ]
+
+
+state 34
+
+    (5) statement -> IF expression LBRACE . statements RBRACE
+    (6) statement -> IF expression LBRACE . statements RBRACE ELSE LBRACE statements RBRACE
+    (2) statements -> . statement
+    (3) statements -> . statement statements
+    (4) statement -> . ID ASSIGN expression SEMICOLON
+    (5) statement -> . IF expression LBRACE statements RBRACE
+    (6) statement -> . IF expression LBRACE statements RBRACE ELSE LBRACE statements RBRACE
+    (7) statement -> . WHILE expression LBRACE statements RBRACE
+    (8) statement -> . FOR expression IN RANGE LBRACE statements RBRACE
+    (9) statement -> . expression SEMICOLON
+    (10) expression -> . INTEGER
+    (11) expression -> . ID
+    (12) expression -> . ID PLUS ID
+    (13) expression -> . ID MINUS ID
+    (14) expression -> . ID MULT ID
+    (15) expression -> . ID DIV ID
+    (16) expression -> . LPAREN expression RPAREN
+    (17) expression -> . expression EQ expression
+    (18) expression -> . expression LT expression
+    (19) expression -> . expression GT expression
+
+    ID              shift and go to state 4
+    IF              shift and go to state 6
+    WHILE           shift and go to state 7
+    FOR             shift and go to state 8
+    INTEGER         shift and go to state 9
+    LPAREN          shift and go to state 10
+
+    expression                     shift and go to state 5
+    statements                     shift and go to state 39
+    statement                      shift and go to state 3
+
+state 35
+
+    (7) statement -> WHILE expression LBRACE . statements RBRACE
+    (2) statements -> . statement
+    (3) statements -> . statement statements
+    (4) statement -> . ID ASSIGN expression SEMICOLON
+    (5) statement -> . IF expression LBRACE statements RBRACE
+    (6) statement -> . IF expression LBRACE statements RBRACE ELSE LBRACE statements RBRACE
+    (7) statement -> . WHILE expression LBRACE statements RBRACE
+    (8) statement -> . FOR expression IN RANGE LBRACE statements RBRACE
+    (9) statement -> . expression SEMICOLON
+    (10) expression -> . INTEGER
+    (11) expression -> . ID
+    (12) expression -> . ID PLUS ID
+    (13) expression -> . ID MINUS ID
+    (14) expression -> . ID MULT ID
+    (15) expression -> . ID DIV ID
+    (16) expression -> . LPAREN expression RPAREN
+    (17) expression -> . expression EQ expression
+    (18) expression -> . expression LT expression
+    (19) expression -> . expression GT expression
+
+    ID              shift and go to state 4
+    IF              shift and go to state 6
+    WHILE           shift and go to state 7
+    FOR             shift and go to state 8
+    INTEGER         shift and go to state 9
+    LPAREN          shift and go to state 10
+
+    expression                     shift and go to state 5
+    statements                     shift and go to state 40
+    statement                      shift and go to state 3
+
+state 36
+
+    (8) statement -> FOR expression IN . RANGE LBRACE statements RBRACE
+
+    RANGE           shift and go to state 41
+
+
+state 37
+
+    (16) expression -> LPAREN expression RPAREN .
+
+    SEMICOLON       reduce using rule 16 (expression -> LPAREN expression RPAREN .)
+    EQ              reduce using rule 16 (expression -> LPAREN expression RPAREN .)
+    LT              reduce using rule 16 (expression -> LPAREN expression RPAREN .)
+    GT              reduce using rule 16 (expression -> LPAREN expression RPAREN .)
+    LBRACE          reduce using rule 16 (expression -> LPAREN expression RPAREN .)
+    IN              reduce using rule 16 (expression -> LPAREN expression RPAREN .)
+    RPAREN          reduce using rule 16 (expression -> LPAREN expression RPAREN .)
+
+
+state 38
+
+    (4) statement -> ID ASSIGN expression SEMICOLON .
+
+    ID              reduce using rule 4 (statement -> ID ASSIGN expression SEMICOLON .)
+    IF              reduce using rule 4 (statement -> ID ASSIGN expression SEMICOLON .)
+    WHILE           reduce using rule 4 (statement -> ID ASSIGN expression SEMICOLON .)
+    FOR             reduce using rule 4 (statement -> ID ASSIGN expression SEMICOLON .)
+    INTEGER         reduce using rule 4 (statement -> ID ASSIGN expression SEMICOLON .)
+    LPAREN          reduce using rule 4 (statement -> ID ASSIGN expression SEMICOLON .)
+    $end            reduce using rule 4 (statement -> ID ASSIGN expression SEMICOLON .)
+    RBRACE          reduce using rule 4 (statement -> ID ASSIGN expression SEMICOLON .)
+
+
+state 39
+
+    (5) statement -> IF expression LBRACE statements . RBRACE
+    (6) statement -> IF expression LBRACE statements . RBRACE ELSE LBRACE statements RBRACE
+
+    RBRACE          shift and go to state 42
+
+
+state 40
+
+    (7) statement -> WHILE expression LBRACE statements . RBRACE
+
+    RBRACE          shift and go to state 43
+
+
+state 41
+
+    (8) statement -> FOR expression IN RANGE . LBRACE statements RBRACE
+
+    LBRACE          shift and go to state 44
+
+
+state 42
+
+    (5) statement -> IF expression LBRACE statements RBRACE .
+    (6) statement -> IF expression LBRACE statements RBRACE . ELSE LBRACE statements RBRACE
+
+    ID              reduce using rule 5 (statement -> IF expression LBRACE statements RBRACE .)
+    IF              reduce using rule 5 (statement -> IF expression LBRACE statements RBRACE .)
+    WHILE           reduce using rule 5 (statement -> IF expression LBRACE statements RBRACE .)
+    FOR             reduce using rule 5 (statement -> IF expression LBRACE statements RBRACE .)
+    INTEGER         reduce using rule 5 (statement -> IF expression LBRACE statements RBRACE .)
+    LPAREN          reduce using rule 5 (statement -> IF expression LBRACE statements RBRACE .)
+    $end            reduce using rule 5 (statement -> IF expression LBRACE statements RBRACE .)
+    RBRACE          reduce using rule 5 (statement -> IF expression LBRACE statements RBRACE .)
+    ELSE            shift and go to state 45
+
+
+state 43
+
+    (7) statement -> WHILE expression LBRACE statements RBRACE .
+
+    ID              reduce using rule 7 (statement -> WHILE expression LBRACE statements RBRACE .)
+    IF              reduce using rule 7 (statement -> WHILE expression LBRACE statements RBRACE .)
+    WHILE           reduce using rule 7 (statement -> WHILE expression LBRACE statements RBRACE .)
+    FOR             reduce using rule 7 (statement -> WHILE expression LBRACE statements RBRACE .)
+    INTEGER         reduce using rule 7 (statement -> WHILE expression LBRACE statements RBRACE .)
+    LPAREN          reduce using rule 7 (statement -> WHILE expression LBRACE statements RBRACE .)
+    $end            reduce using rule 7 (statement -> WHILE expression LBRACE statements RBRACE .)
+    RBRACE          reduce using rule 7 (statement -> WHILE expression LBRACE statements RBRACE .)
+
+
+state 44
+
+    (8) statement -> FOR expression IN RANGE LBRACE . statements RBRACE
+    (2) statements -> . statement
+    (3) statements -> . statement statements
+    (4) statement -> . ID ASSIGN expression SEMICOLON
+    (5) statement -> . IF expression LBRACE statements RBRACE
+    (6) statement -> . IF expression LBRACE statements RBRACE ELSE LBRACE statements RBRACE
+    (7) statement -> . WHILE expression LBRACE statements RBRACE
+    (8) statement -> . FOR expression IN RANGE LBRACE statements RBRACE
+    (9) statement -> . expression SEMICOLON
+    (10) expression -> . INTEGER
+    (11) expression -> . ID
+    (12) expression -> . ID PLUS ID
+    (13) expression -> . ID MINUS ID
+    (14) expression -> . ID MULT ID
+    (15) expression -> . ID DIV ID
+    (16) expression -> . LPAREN expression RPAREN
+    (17) expression -> . expression EQ expression
+    (18) expression -> . expression LT expression
+    (19) expression -> . expression GT expression
+
+    ID              shift and go to state 4
+    IF              shift and go to state 6
+    WHILE           shift and go to state 7
+    FOR             shift and go to state 8
+    INTEGER         shift and go to state 9
+    LPAREN          shift and go to state 10
+
+    expression                     shift and go to state 5
+    statements                     shift and go to state 46
+    statement                      shift and go to state 3
+
+state 45
+
+    (6) statement -> IF expression LBRACE statements RBRACE ELSE . LBRACE statements RBRACE
+
+    LBRACE          shift and go to state 47
+
+
+state 46
+
+    (8) statement -> FOR expression IN RANGE LBRACE statements . RBRACE
+
+    RBRACE          shift and go to state 48
+
+
+state 47
+
+    (6) statement -> IF expression LBRACE statements RBRACE ELSE LBRACE . statements RBRACE
+    (2) statements -> . statement
+    (3) statements -> . statement statements
+    (4) statement -> . ID ASSIGN expression SEMICOLON
+    (5) statement -> . IF expression LBRACE statements RBRACE
+    (6) statement -> . IF expression LBRACE statements RBRACE ELSE LBRACE statements RBRACE
+    (7) statement -> . WHILE expression LBRACE statements RBRACE
+    (8) statement -> . FOR expression IN RANGE LBRACE statements RBRACE
+    (9) statement -> . expression SEMICOLON
+    (10) expression -> . INTEGER
+    (11) expression -> . ID
+    (12) expression -> . ID PLUS ID
+    (13) expression -> . ID MINUS ID
+    (14) expression -> . ID MULT ID
+    (15) expression -> . ID DIV ID
+    (16) expression -> . LPAREN expression RPAREN
+    (17) expression -> . expression EQ expression
+    (18) expression -> . expression LT expression
+    (19) expression -> . expression GT expression
+
+    ID              shift and go to state 4
+    IF              shift and go to state 6
+    WHILE           shift and go to state 7
+    FOR             shift and go to state 8
+    INTEGER         shift and go to state 9
+    LPAREN          shift and go to state 10
+
+    expression                     shift and go to state 5
+    statements                     shift and go to state 49
+    statement                      shift and go to state 3
+
+state 48
+
+    (8) statement -> FOR expression IN RANGE LBRACE statements RBRACE .
+
+    ID              reduce using rule 8 (statement -> FOR expression IN RANGE LBRACE statements RBRACE .)
+    IF              reduce using rule 8 (statement -> FOR expression IN RANGE LBRACE statements RBRACE .)
+    WHILE           reduce using rule 8 (statement -> FOR expression IN RANGE LBRACE statements RBRACE .)
+    FOR             reduce using rule 8 (statement -> FOR expression IN RANGE LBRACE statements RBRACE .)
+    INTEGER         reduce using rule 8 (statement -> FOR expression IN RANGE LBRACE statements RBRACE .)
+    LPAREN          reduce using rule 8 (statement -> FOR expression IN RANGE LBRACE statements RBRACE .)
+    $end            reduce using rule 8 (statement -> FOR expression IN RANGE LBRACE statements RBRACE .)
+    RBRACE          reduce using rule 8 (statement -> FOR expression IN RANGE LBRACE statements RBRACE .)
+
+
+state 49
+
+    (6) statement -> IF expression LBRACE statements RBRACE ELSE LBRACE statements . RBRACE
+
+    RBRACE          shift and go to state 50
+
+
+state 50
+
+    (6) statement -> IF expression LBRACE statements RBRACE ELSE LBRACE statements RBRACE .
+
+    ID              reduce using rule 6 (statement -> IF expression LBRACE statements RBRACE ELSE LBRACE statements RBRACE .)
+    IF              reduce using rule 6 (statement -> IF expression LBRACE statements RBRACE ELSE LBRACE statements RBRACE .)
+    WHILE           reduce using rule 6 (statement -> IF expression LBRACE statements RBRACE ELSE LBRACE statements RBRACE .)
+    FOR             reduce using rule 6 (statement -> IF expression LBRACE statements RBRACE ELSE LBRACE statements RBRACE .)
+    INTEGER         reduce using rule 6 (statement -> IF expression LBRACE statements RBRACE ELSE LBRACE statements RBRACE .)
+    LPAREN          reduce using rule 6 (statement -> IF expression LBRACE statements RBRACE ELSE LBRACE statements RBRACE .)
+    $end            reduce using rule 6 (statement -> IF expression LBRACE statements RBRACE ELSE LBRACE statements RBRACE .)
+    RBRACE          reduce using rule 6 (statement -> IF expression LBRACE statements RBRACE ELSE LBRACE statements RBRACE .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for EQ in state 31 resolved as shift
+WARNING: shift/reduce conflict for LT in state 31 resolved as shift
+WARNING: shift/reduce conflict for GT in state 31 resolved as shift
+WARNING: shift/reduce conflict for EQ in state 32 resolved as shift
+WARNING: shift/reduce conflict for LT in state 32 resolved as shift
+WARNING: shift/reduce conflict for GT in state 32 resolved as shift
+WARNING: shift/reduce conflict for EQ in state 33 resolved as shift
+WARNING: shift/reduce conflict for LT in state 33 resolved as shift
+WARNING: shift/reduce conflict for GT in state 33 resolved as shift
